@@ -10,6 +10,16 @@ function FormSignup() {
   const [password, setPassword] = useState("password");
   const [user, setUser] = useState("Johnny Doe");
 
+  const handleChange = e => {
+    let target = e.target;
+    let value = target.type === "checkbox" ? target.checked : target.value;
+    setEmail(value);
+  };
+  const handlePass = e => {
+    setPassword(e.target.value);
+    console.log(password);
+  };
+
   return (
     <FormWrap>
       <Nav />
@@ -17,12 +27,22 @@ function FormSignup() {
         <h2>Signup For An Account</h2>
         <div className="form-field">
           <label htmlFor="user">
-            <input type="text" name="user" />
+            <input
+              type="text"
+              name="user"
+              value={user}
+              onChange={handleChange}
+            />
           </label>
         </div>
         <div className="form-field">
           <label htmlFor="email">
-            <input type="email" name="email" value={email} />
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
           </label>
         </div>
         <div className="form-field">
@@ -32,6 +52,7 @@ function FormSignup() {
               name="password"
               value={password}
               placeholder={password}
+              onChange={handlePass}
             />
           </label>
         </div>

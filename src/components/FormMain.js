@@ -10,6 +10,20 @@ function FormMain() {
   const [password, setPassword] = useState("password");
   const [isRemember, setIsRemember] = useState(false);
 
+  const handleChange = e => {
+    let target = e.target;
+    let value = target.type === "checkbox" ? target.checked : target.value;
+    setEmail(value);
+  };
+  const handlePass = e => {
+    setPassword(e.target.value);
+    console.log(password);
+  };
+  const handleCheck = e => {
+    setIsRemember(!e.target.checked);
+    console.log(isRemember);
+  };
+
   return (
     <FormWrap>
       <Nav />
@@ -17,7 +31,13 @@ function FormMain() {
         <h2>Login to Your Account</h2>
         <div className="form-field">
           <label htmlFor="email">
-            <input type="email" name="email" value={email} />
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              onFocus={() => setEmail("")}
+            />
           </label>
         </div>
         <div className="form-field">
@@ -27,12 +47,19 @@ function FormMain() {
               name="password"
               value={password}
               placeholder={password}
+              onChange={handlePass}
+              onFocus={() => setPassword("")}
             />
           </label>
         </div>
         <div className="form-field remember-block">
           <label>
-            <input type="checkbox" name="isRemember" value={isRemember} />
+            <input
+              type="checkbox"
+              name="isRemember"
+              value={isRemember}
+              onChange={handleCheck}
+            />
             <span></span>
             Remember me
           </label>
