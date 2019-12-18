@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
+import Nav from "./Nav";
 import { FormWrap } from "../styles/Wrap";
 import { FormSign } from "../styles/Form";
 
@@ -11,6 +12,7 @@ function FormSignup() {
 
   return (
     <FormWrap>
+      <Nav />
       <FormSign>
         <h2>Signup For An Account</h2>
         <div className="form-field">
@@ -38,7 +40,7 @@ function FormSignup() {
         </div>
         <div className="form-field signup-block">
           <span>Already have an account? </span>
-          <Link to="/signin"> Login</Link>
+          <Link to="/"> Login</Link>
         </div>
       </FormSign>
     </FormWrap>

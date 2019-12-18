@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
+import Nav from "./Nav";
 import { FormWrap } from "../styles/Wrap";
 import { Form } from "../styles/Form";
 
@@ -11,6 +12,7 @@ function FormMain() {
 
   return (
     <FormWrap>
+      <Nav />
       <Form>
         <h2>Login to Your Account</h2>
         <div className="form-field">
