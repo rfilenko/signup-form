@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
+import { Form } from "../styles/Form";
+
 function FormMain() {
   const [email, setEmail] = useState("john.doe@test.com");
   const [password, setPassword] = useState("password");
   const [isRemember, setIsRemember] = useState(false);
   return (
-    <form>
+    <Form>
       <h2>Login to Your Account</h2>
       <div className="form-field">
         <label htmlFor="email">
@@ -39,7 +41,7 @@ function FormMain() {
         <span>Don't have an account? </span>
         <Link to="/signup"> Signup</Link>
       </div>
-    </form>
+    </Form>
   );
 }
 export default FormMain;

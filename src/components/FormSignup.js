@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { FormSign } from "../styles/Form";
 
 function FormSignup() {
   const [email, setEmail] = useState("john.doe@test.com");
@@ -7,7 +8,7 @@ function FormSignup() {
   const [user, setUser] = useState("Johnny Doe");
 
   return (
-    <form>
+    <FormSign>
       <h2>Signup For An Account</h2>
       <div className="form-field">
         <label htmlFor="user">
@@ -36,7 +37,7 @@ function FormSignup() {
         <span>Already have an account? </span>
         <Link to="/signin"> Login</Link>
       </div>
-    </form>
+    </FormSign>
   );
 }
 
