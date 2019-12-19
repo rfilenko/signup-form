@@ -4,39 +4,27 @@ import { Link } from "react-router-dom";
 import Nav from "./Nav";
 import { FormWrap } from "../styles/Wrap";
 import { Form } from "../styles/Form";
+import useForm from "./useForm";
 
 function FormMain() {
-  const [email, setEmail] = useState("john.doe@test.com");
-  const [password, setPassword] = useState("password");
-  const [isRemember, setIsRemember] = useState(false);
-
-  const handleChange = e => {
-    let target = e.target;
-    let value = target.type === "checkbox" ? target.checked : target.value;
-    setEmail(value);
-  };
-  const handlePass = e => {
-    setPassword(e.target.value);
-    console.log(password);
-  };
-  const handleCheck = e => {
-    setIsRemember(!e.target.checked);
-    console.log(isRemember);
-  };
+  const { handleChange, handleSubmit, handleFocus, values } = useForm(submit);
+  function submit() {
+    console.log("Submit successfully");
+  }
 
   return (
     <FormWrap>
       <Nav />
-      <Form>
+      <Form noValidate onSubmit={handleSubmit}>
         <h2>Login to Your Account</h2>
         <div className="form-field">
           <label htmlFor="email">
             <input
               type="email"
               name="email"
-              value={email}
+              value={values.email}
               onChange={handleChange}
-              onFocus={() => setEmail("")}
+              onFocus={handleFocus}
             />
           </label>
         </div>
@@ -45,10 +33,10 @@ function FormMain() {
             <input
               type="password"
               name="password"
-              value={password}
-              placeholder={password}
-              onChange={handlePass}
-              onFocus={() => setPassword("")}
+              value={values.password}
+              placeholder={values.Navpassword}
+              onChange={handleChange}
+              onFocus={handleFocus}
             />
           </label>
         </div>
@@ -56,9 +44,9 @@ function FormMain() {
           <label>
             <input
               type="checkbox"
-              name="isRemember"
-              value={isRemember}
-              onChange={handleCheck}
+              name="isChecked"
+              value={values.isChecked}
+              onChange={handleChange}
             />
             <span></span>
             Remember me
